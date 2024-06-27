@@ -1,0 +1,13 @@
+Package: DSS
+Type: Package
+Title: Re-build of DSS package to be used in R 4.2.x
+Version: 1.0.0
+Author: Noah Berlow
+Maintainer: Noah Berlow <nberlow@gmail.com>
+Depends: R (>= 4.2.0), stringr (>= 1.5.0)
+Description: Drug sensitivity score quantification slightly modified for use in non-3.6.3 R  
+License: GPL-3
+Encoding: UTF-8
+NeedsCompilation: no
+Packaged: 2024-06-27 18:51:00 UTC; nberl
+Built: R 4.2.2; ; 2024-06-27 18:51:06 UTC; windows
