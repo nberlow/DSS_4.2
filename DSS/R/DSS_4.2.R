@@ -12,7 +12,7 @@ DSS <-
       stop("Percent inhibition must be greater than Zero. Please, see manual for details.")
     }
 
-    DSS <- setNames(data.frame(matrix(nrow = nrow(rdata), ncol = 1)), "DSS")
+    DSS <- setNames(data.frame(matrix( ncol = 1)), "DSS")
 
 
     #DSS <- data.frame(list('DSS'))
@@ -47,13 +47,13 @@ DSS <-
       }
 
       if(is.na(ic50)||is.na(b)||is.na(a)){
-        DSS[row]<-NA
+        DSS[row,1]<-NA
       }
       else if(isTRUE(ic50>=Max.Conc)){
-        DSS[row]<-0
+        DSS[row,1]<-0
       }
       else if(b<0){
-        DSS[row]<-0
+        DSS[row,1]<-0
       }
       else{
         if(log){
@@ -90,9 +90,24 @@ DSS <-
             norm_area<-((int_y/total_area)*100)*(log10(100)/log10(a))*((x2-x1)/(x2-Min.Conc)) #DSS3
           }
 
-          DSS[row,1]<-round(norm_area,digits=8)
 
-        } else {DSS[row]<-0}
+          if(round(norm_area,digits=8) > 0)
+          {
+            DSS[row,1]<-round(norm_area,digits=8)
+          }
+          else
+          {
+            DSS[row,1]<-round(norm_area,digits=8)
+          }
+
+        }
+
+
+        else
+        {
+          DSS[row,1]<-0
+
+        }
       }
     }
     return (data.frame(DSS))
